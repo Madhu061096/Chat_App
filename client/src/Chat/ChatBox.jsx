@@ -104,7 +104,11 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     const socket = socketIOClient(process.env.REACT_APP_API_URL);
-    socket.on("messages", (data) => setLastMessage(data));
+    console.log(socket);
+    socket.on("messages", (data) => {
+      console.log('message arrived', data);
+      setLastMessage(data)
+    });
   }, []);
 
   const reloadMessages = () => {
