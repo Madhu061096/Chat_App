@@ -16,7 +16,7 @@ const server = app.listen(port, () =>
   console.log(`Server running on port ${port}`)
 );
 
-const io = require("socket.io").listen(server, { origins: '*:*' });
+const io = require("socket.io")("http://ec2-13-233-214-72.ap-south-1.compute.amazonaws.com").listen(server, { origins: '*:*' });
 
 // Body Parser middleware to parse request bodies
 app.use(

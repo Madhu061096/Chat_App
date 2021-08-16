@@ -135,11 +135,15 @@ const ChatBox = (props) => {
       sendGlobalMessage(newMessage).then(() => {
         setNewMessage("");
       });
+      getGlobalMessages().then((res) => {
+        setMessages(res);
+      });
     } else {
       sendConversationMessage(props.user._id, newMessage).then((res) => {
         setNewMessage("");
       });
-    }
+      getConversationMessages(props.user._id, newMessage).then((res) => {setNewMessage(res)});
+      }
   };
 
   return (
