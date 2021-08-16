@@ -142,7 +142,7 @@ const ChatBox = (props) => {
       sendConversationMessage(props.user._id, newMessage).then((res) => {
         setNewMessage("");
       });
-      getConversationMessages(props.user._id, newMessage).then((res) => {setNewMessage(res)});
+      getConversationMessages(props.user._id).then((res) => {setNewMessage(res)});
       }
   };
 
