@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const cors = require("cors");
-
+//const socket = require("socket.io");
 const users = require("./routes/api/users");
 const messages = require("./routes/api/messages");
 
@@ -16,7 +16,20 @@ const server = app.listen(port, () =>
   console.log(`Server running on port ${port}`)
 );
 
-const io = require("socket.io")("http://ec2-13-233-214-72.ap-south-1.compute.amazonaws.com").listen(server, { origins: '*:*' });
+const http = require('http').Server(app);
+//const io = socket(server);
+const io = require('socket.io')(http).listen(server, { origins: '*:*' });
+//io.on('connection', function(socket) {
+
+  //  console.log('Client connected.');
+
+    // Disconnect listener
+    //socket.on('disconnect', function() {
+      //  console.log('Client disconnected.');
+    //});
+//});
+
+//const io = require("socket.io")().listen(server, { origins: '*:*' });
 
 // Body Parser middleware to parse request bodies
 app.use(
